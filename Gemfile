@@ -75,6 +75,7 @@ gem "dotenv-rails"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection", '~> 1.0'
+gem "figaro"
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
