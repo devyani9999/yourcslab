@@ -1,0 +1,183 @@
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-bottom: 30px;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div > h1 {
+  font-size: 1.8rem;
+}
+
+nav > p {
+  cursor: pointer;
+}
+.pill-black, .pill-white {
+  border: 0.5px solid;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pill-black {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+footer div {
+  display: flex;
+  align-items: center;
+}
+
+/* Customizations of Bootstrap classes */
+
+header .row {
+  display: flex;
+  align-items: center;
+}
+
+.col-sm-4 p {
+  margin: 25px 20px 15px;
+  min-width: 60px;
+  padding: 1px;
+}
+
+section.container .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  height: 350px;
+  background-image: url("https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.jumbotron h2 {
+  background-color: #FFFFFF;
+  display: inline-block;
+  color: #36454F;
+  font-weight: 700;
+  padding: 10px 35px;
+  border-radius: 5px;
+}
+
+.jumbotron h3 {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.col-sm-1 img {
+  min-width: 32px;
+  min-height: 33px;
+}
+
+.card {
+	background:#154F56;
+	color:white;
+	height:28rem;
+	border-radius: 1.25rem;
+  padding: 10px;
+}
+.card-title{
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.price-div{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.price{
+    font-weight: bold;
+    font-size: medium;
+    float: left;
+}
+.detail-link{
+    float: right;
+}
+.detail-link a {
+    text-decoration: none;
+    color: white;
+    font-size: medium;
+}
+
+.detail-link a:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.enrol-btn{
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enrol-btn a{
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    color: #154F56;
+    font-weight: bold;
+}
+</style>
+
+<section class="jumbotron">
+  <div class="container">
+    <div class="row text-center">
+      <h2>Learn New Technologies</h2>
+    </div>
+  </div>
+</section>
+
+
+<div id="viewport">
+  <section class="container">
+    <%
+      Course.all.in_batches(of: 3) do |courses|
+    %>
+      <div class="row">
+        <% courses.each do |course|%>
+          <div class="col-sm-4 mb-3 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title"><%= course.name %></h3>
+                <p class="card-text"><%= course.description %></p>
+                <div class="price-div"><span class="price">Price: C$<%= course.price %></span>
+                  <span class="detail-link"><a href="#" class="">Details</a></span></div>
+              </div>
+            </div>
+          </div>
+        <%end %>
+      </div>
+      <br>
+    <%end%>
+  </section>
+</div>

@@ -1,0 +1,2 @@
+class ContactFormQuery < ApplicationRecord
+end

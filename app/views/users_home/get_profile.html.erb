@@ -1,0 +1,195 @@
+<style>
+
+    body{
+        background:#f5f5f5;
+    }
+    /**
+     * Panels
+     */
+    /*** General styles ***/
+    .panel {
+        box-shadow: none;
+    }
+    .panel-heading {
+        border-bottom: 0;
+    }
+    .panel-title {
+        font-size: 17px;
+        color: white;
+    }
+    .panel-title > small {
+        font-size: .75em;
+        color: white;
+    }
+    .panel-body *:first-child {
+        margin-top: 0;
+    }
+    .panel-footer {
+        border-top: 0;
+    }
+
+    .panel-default > .panel-heading {
+        color: #333333;
+        background-color: transparent;
+        border-color: rgba(0, 0, 0, 0.07);
+    }
+
+    form label {
+        color: #FFFFFF;
+        font-weight: 400;
+    }
+
+    .form-horizontal .form-group {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    @media (min-width: 768px) {
+        .form-horizontal .control-label {
+            text-align: right;
+            margin-bottom: 0;
+            padding-top: 7px;
+        }
+    }
+
+    .profile__contact-info-icon {
+        float: left;
+        font-size: 18px;
+        color: #999999;
+    }
+    .profile__contact-info-body {
+        overflow: hidden;
+        padding-left: 20px;
+        color: #999999;
+    }
+    .profile-avatar {
+        width: 200px;
+        position: relative;
+        margin: 0px auto;
+        margin-top: 196px;
+        border: 4px solid #f3f3f3;
+    }
+    .panel {
+        background: #154F56;
+        /*color: #FFFFFF;*/
+    }
+</style>
+
+<div id="viewport">
+
+  <!-- Sidebar -->
+  <div class="container-fluid bootstrap snippets bootdeys">
+    <div class="row">
+      <div class="col-xs-12 col-sm-9">
+        <%= form_tag(update_user_profile_path(@user.id), method: :post, class: "form-horizontal") do %>
+          <!--        <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-circle profile-avatar" alt="User avatar">
+                    </div>
+                  </div>-->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title" style="color: white">User info</h4>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= label_tag :first_name, "First Name", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                <%= text_field_tag :first_name, @user.first_name, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :last_name, "Last Name", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_field_tag :last_name, @user.last_name, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :institute, "Company or College or University Name", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_field_tag :institute, @user.institute, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :position, "Position", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_field_tag :position, @user.position, class: "form-control" %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Contact info</h4>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= label_tag :phone, "Mobile number", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_field_tag :phone, @user.phone, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :phone, "Email", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_field_tag :email, @user.email, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :address, "Address", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= text_area_tag :address, @user.address, class: "form-control" %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Security</h4>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= label_tag :current_password, "Current Password", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= password_field_tag :current_password, @user.current_password, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :password, "Password", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= password_field_tag :password, @user.password, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :password_confirmation, "Confirm New Password", class: "col-sm-2 control-label" %>
+                <div class="col-sm-10">
+                  <%= password_field_tag :password_confirmation, @user.password_confirmation, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

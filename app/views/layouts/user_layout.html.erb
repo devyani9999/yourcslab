@@ -1,0 +1,266 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+    }
+
+    /* Toggle Styles */
+
+    #viewport {
+        /*padding-left: 250px;*/
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+
+    /* Sidebar Styles */
+
+    #sidebar {
+        z-index: 1000;
+        position: fixed;
+        left: 250px;
+        width: 250px;
+        height: 100%;
+        margin-left: -250px;
+        overflow-y: auto;
+        /*background: #37474F;*/
+        background: #253236;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #sidebar header {
+        background-color: #263238;
+        font-size: 20px;
+        line-height: 52px;
+        text-align: center;
+    }
+
+    #sidebar header a {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+    }
+
+    #sidebar header a:hover {
+        color: #fff;
+    }
+
+    #sidebar .nav {
+
+    }
+
+    #sidebar .nav a {
+        background: none;
+        border-bottom: 1px solid #455A64;
+        color: #CFD8DC;
+        font-size: 14px;
+        padding: 16px 24px;
+    }
+
+    .hello{
+        color: #455A64;
+        font-size: 16px;
+        padding: 16px 24px;
+        text-decoration: none;
+    }
+
+    .hello a:hover {
+        background: none;
+        color: #ECEFF1;
+        text-decoration: none;
+    }
+
+    #sidebar .nav a i {
+        margin-right: 16px;
+    }
+
+    .name {
+        background: none;
+        color: #777777;
+        font-size: 17px;
+        /*padding: 16px 24px;*/
+        /*padding-top: 15px;*/
+        /*padding-bottom: 15px;*/
+        /*!*line-height: 20px;*!*/
+        /*display: block;*/
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+    }
+
+
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Codeguru</title>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+      body {
+          margin: 0;
+          font-family: "Lato", sans-serif;
+      }
+
+      .sidebar {
+          margin: 0;
+          padding: 0;
+          width: 200px;
+          background-color: #253236;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+      }
+
+      .sidebar a {
+          display: block;
+          color: white;
+          padding: 16px;
+          text-decoration: none;
+          border-bottom: 1px solid #555;
+      }
+
+      .sidebar a.active {
+          background-color: #04AA6D;
+          color: white;
+      }
+
+
+      .sidebar a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+      }
+
+      div.content {
+          margin-left: 200px;
+          /*padding: 1px 16px;*/
+          height: 60px;
+      }
+
+      .actual-content{
+          margin-left: 200px;
+          padding: 1px 16px;
+          /*height: 1000px;*/
+      }
+
+      @media screen and (max-width: 700px) {
+          .sidebar {
+              width: 100%;
+              height: auto;
+              position: relative;
+          }
+          .sidebar a {float: left;}
+          div.content {margin-left: 0;}
+          div.actual-content {margin-left: 0;}
+      }
+
+      @media screen and (max-width: 400px) {
+          .sidebar a {
+              text-align: center;
+              float: none;
+          }
+      }
+      .btn-lnk{
+              background: transparent!important;
+              border: none;
+              /*padding: 0!important;*/
+              /*optional*/
+              font-family: 'Roboto', sans-serif;
+              font-size: 16px;
+              /*input has OS specific font-family*/
+              color: #9D9D9D;
+              text-decoration: none;
+              cursor: pointer;
+              padding-bottom: 15px;
+              padding-top: 15px;
+              line-height: 20px;
+              position: relative;
+              font-weight: 400;
+              /*padding: 10px 15px;*/
+      }
+  </style>
+</head>
+
+<body>
+
+<div>
+  <div style="position: sticky; top: 0; z-index: 1000">
+    <nav class="navbar navbar-inverse sticky-top" style="margin-bottom: 0; background-color: #253237; position: sticky; top: 0; z-index: 1000">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">YourCSLab</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="<%= user_dashboard_path(current_user.id) %>">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="<%= contact_path %>">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= button_to "Log Out", destroy_user_session_path, :method => :delete, :class => "btn-lnk", :confirm => "Are you sure ?"%>
+            </li>
+<!--            <li>-->
+<!--              <a href="<%#= destroy_user_session_path %>" data-confirm="Are you sure?" rel="nofollow" data-method="delete"><span class="glyphicon glyphicon-log-in fw-bolder"></span> Log Out</a></li>-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <div class="sidebar">
+        <a href="<%= user_dashboard_path(current_user.id) %>">
+          Dashboard
+        </a>
+        <a href="<%= get_user_profile_path(current_user.id) %>">
+          Profile
+        </a>
+      </div>
+
+      <div class="content">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div style="float: left;" class="hello">Hello, <%= current_user.display_name %></div>
+            <div><a href="<%= courses_path %>" style="float: right" class="hello">Register for New Courses</a></div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="actual-content">
+        <%= yield %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+
+
+

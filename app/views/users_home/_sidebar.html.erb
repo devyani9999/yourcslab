@@ -1,0 +1,127 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+    }
+
+    /* Toggle Styles */
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+
+    /* Sidebar Styles */
+
+    #sidebar {
+        z-index: 1000;
+        position: fixed;
+        left: 250px;
+        width: 250px;
+        height: 100%;
+        margin-left: -250px;
+        overflow-y: auto;
+        /*background: #37474F;*/
+        background: #253236;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #sidebar header {
+        background-color: #263238;
+        font-size: 20px;
+        line-height: 52px;
+        text-align: center;
+    }
+
+    #sidebar header a {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+    }
+
+    #sidebar header a:hover {
+        color: #fff;
+    }
+
+    #sidebar .nav{
+
+    }
+
+    #sidebar .nav a{
+        background: none;
+        border-bottom: 1px solid #455A64;
+        color: #CFD8DC;
+        font-size: 14px;
+        padding: 16px 24px;
+    }
+
+    #sidebar .nav a:hover{
+        background: none;
+        color: #ECEFF1;
+    }
+
+    #sidebar .nav a i{
+        margin-right: 16px;
+    }
+
+    .name{
+        background: none;
+        color: #777777;
+        font-size: 17px;
+        /*padding: 16px 24px;*/
+        /*padding-top: 15px;*/
+        /*padding-bottom: 15px;*/
+        /*!*line-height: 20px;*!*/
+        /*display: block;*/
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+    }
+
+
+</style>
+<div id="sidebar">
+  <header>
+<!--    <a href="#">Useful Links</a>-->
+  </header>
+  <ul class="nav" style="display: block">
+    <li>
+      <a href="<%= user_dashboard_path(current_user.id) %>">
+        <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="<%= get_user_profile_path(current_user.id) %>">
+        <i class="zmdi zmdi-link"></i> Profile
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- Content -->
+<div id="content">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%= courses_path %>">Register for New Courses</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-left">
+        <li><p class="name">Hello, <%= current_user.display_name %></p></li>
+      </ul>
+    </div>
+  </nav>
+</div>
